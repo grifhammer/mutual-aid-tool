@@ -1,12 +1,36 @@
+import { Project, web } from "projen";
 import { TurborepoProject } from "projen-turborepo";
 const project = new TurborepoProject({
   defaultReleaseBranch: "main",
   devDeps: ["projen-turborepo"],
-  name: "ma-tool",
+  name: "mutual-aid-tracker",
   projenrcTs: true,
-
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // packageName: undefined,  /* The "name" in package.json. */
+  projectReferences: true,
+  vscodeMultiRootWorkspaces: true,
+  parallelWorkflows: true,
+  eslintOptions: {
+    prettier: true,
+    dirs: [],
+  },
+  tsconfig: {
+    compilerOptions: {
+      forceConsistentCasingInFileNames: true,
+    },
+  },
+  description: "A tool for tracking mutual aid",
+  deps: [] /* Runtime dependencies of this module. */,
 });
+new web.NextJsTypeScriptProject({
+  defaultReleaseBranch: "main",
+  name: "Frontend",
+  outdir: "web",
+  parent: project,
+});
+
+new Project({
+  parent: project,
+  name: "Backend",
+  outdir: "backend",
+});
+
 project.synth();
