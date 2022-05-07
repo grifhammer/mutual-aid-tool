@@ -26,6 +26,7 @@ new web.NextJsTypeScriptProject({
   name: "Frontend",
   outdir: "web",
   parent: project,
+  deps: [],
   eslintOptions: {
     prettier: true,
     dirs: [],
@@ -37,6 +38,7 @@ new TypeScriptProject({
   name: "Backend",
   outdir: "backend",
   defaultReleaseBranch: "main",
+  deps: ["@pulumi/kubernetes", "@pulumi/kubernetesx"],
   eslintOptions: {
     prettier: true,
     dirs: [],
