@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@types/jest",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^14",
       "type": "build"
@@ -41,6 +45,16 @@
       "type": "build"
     },
     {
+      "name": "jest-junit",
+      "version": "^13",
+      "type": "build"
+    },
+    {
+      "name": "jest",
+      "version": "^27",
+      "type": "build"
+    },
+    {
       "name": "json-schema",
       "type": "build"
     },
@@ -58,21 +72,8 @@
       "type": "build"
     },
     {
-      "name": "projen-turborepo",
-      "type": "build"
-    },
-    {
-      "name": "standard-version",
-      "version": "^9",
-      "type": "build"
-    },
-    {
-      "name": "ts-node",
-      "version": "^9",
-      "type": "build"
-    },
-    {
-      "name": "turbo",
+      "name": "ts-jest",
+      "version": "^27",
       "type": "build"
     },
     {

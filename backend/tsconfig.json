@@ -24,9 +24,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "ES2019",
-    "forceConsistentCasingInFileNames": true,
-    "composite": true
+    "target": "ES2019"
   },
   "include": [
     "src/**/*.ts"

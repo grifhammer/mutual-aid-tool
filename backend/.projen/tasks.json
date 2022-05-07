@@ -5,9 +5,6 @@
       "description": "Full release build",
       "steps": [
         {
-          "spawn": "default"
-        },
-        {
           "spawn": "pre-compile"
         },
         {
@@ -23,23 +20,6 @@
           "spawn": "package"
         }
       ]
-    },
-    "bump": {
-      "name": "bump",
-      "description": "Bumps version based on latest git tag and generates a changelog entry",
-      "env": {
-        "OUTFILE": "package.json",
-        "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt",
-        "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": ""
-      },
-      "steps": [
-        {
-          "builtin": "release/bump-version"
-        }
-      ],
-      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
     },
     "clobber": {
       "name": "clobber",
@@ -75,14 +55,19 @@
     },
     "compile": {
       "name": "compile",
-      "description": "Only compile"
+      "description": "Only compile",
+      "steps": [
+        {
+          "exec": "tsc --build"
+        }
+      ]
     },
     "default": {
       "name": "default",
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
+          "exec": "node .projenrc.js"
         }
       ]
     },
@@ -109,7 +94,15 @@
     },
     "package": {
       "name": "package",
-      "description": "Creates the distribution package"
+      "description": "Creates the distribution package",
+      "steps": [
+        {
+          "exec": "mkdir -p dist\\js"
+        },
+        {
+          "exec": "mv $(npm pack) dist\\js/"
+        }
+      ]
     },
     "post-compile": {
       "name": "post-compile",
@@ -123,83 +116,33 @@
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
     },
-    "release": {
-      "name": "release",
-      "description": "Prepare a release from \"main\" branch",
-      "env": {
-        "RELEASE": "true"
-      },
-      "steps": [
-        {
-          "exec": "rm -fr dist"
-        },
-        {
-          "spawn": "bump"
-        },
-        {
-          "spawn": "build"
-        },
-        {
-          "spawn": "unbump"
-        },
-        {
-          "exec": "git diff --ignore-space-at-eol --exit-code"
-        }
-      ]
-    },
     "test": {
       "name": "test",
-      "description": "Run tests"
-    },
-    "turbo:build": {
-      "name": "turbo:build",
-      "description": "Runs build in all sub-projects via turbo.",
+      "description": "Run tests",
       "steps": [
         {
-          "exec": "turbo run build"
+          "exec": "jest --passWithNoTests --all --updateSnapshot"
+        },
+        {
+          "spawn": "eslint"
         }
       ]
     },
-    "turbo:compile": {
-      "name": "turbo:compile",
-      "description": "Runs compile in all sub-projects via turbo.",
+    "test:update": {
+      "name": "test:update",
+      "description": "Update jest snapshots",
       "steps": [
         {
-          "exec": "turbo run compile"
+          "exec": "jest --updateSnapshot"
         }
       ]
     },
-    "turbo:eslint": {
-      "name": "turbo:eslint",
-      "description": "Runs eslint in all sub-projects via turbo.",
+    "test:watch": {
+      "name": "test:watch",
+      "description": "Run jest in watch mode",
       "steps": [
         {
-          "exec": "turbo run eslint"
-        }
-      ]
-    },
-    "turbo:test": {
-      "name": "turbo:test",
-      "description": "Runs test in all sub-projects via turbo.",
-      "steps": [
-        {
-          "exec": "turbo run test"
-        }
-      ]
-    },
-    "unbump": {
-      "name": "unbump",
-      "description": "Restores version to 0.0.0",
-      "env": {
-        "OUTFILE": "package.json",
-        "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt",
-        "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": ""
-      },
-      "steps": [
-        {
-          "builtin": "release/reset-version"
+          "exec": "jest --watch"
         }
       ]
     },
