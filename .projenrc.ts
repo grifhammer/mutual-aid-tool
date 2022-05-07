@@ -18,6 +18,7 @@ const project = new TurborepoProject({
       forceConsistentCasingInFileNames: true,
     },
   },
+  release: false,
   description: "A tool for tracking mutual aid",
   deps: [] /* Runtime dependencies of this module. */,
 });
