@@ -32,6 +32,7 @@ new web.NextJsTypeScriptProject({
     prettier: true,
     dirs: [],
   },
+  tailwind: true,
 });
 
 new TypeScriptProject({
