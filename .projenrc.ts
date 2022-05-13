@@ -1,6 +1,7 @@
 import { web } from "projen";
 import { TurborepoProject } from "projen-turborepo";
 import { TypeScriptProject } from "projen/lib/typescript";
+import { PostCss } from "projen/lib/web";
 const project = new TurborepoProject({
   defaultReleaseBranch: "main",
   devDeps: ["projen-turborepo"],
@@ -22,7 +23,7 @@ const project = new TurborepoProject({
   description: "A tool for tracking mutual aid",
   deps: [] /* Runtime dependencies of this module. */,
 });
-new web.NextJsTypeScriptProject({
+const nextJs = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: "main",
   name: "Frontend",
   outdir: "web",
@@ -32,9 +33,19 @@ new web.NextJsTypeScriptProject({
     prettier: true,
     dirs: [],
   },
-  tailwind: true,
+  tailwind: false,
+  tsconfigDev: {
+    compilerOptions: {
+      strict: true,
+    },
+  },
 });
-
+new PostCss(nextJs, {
+  tailwind: true,
+  tailwindOptions: {
+    content: [],
+  },
+});
 new TypeScriptProject({
   parent: project,
   name: "Backend",
