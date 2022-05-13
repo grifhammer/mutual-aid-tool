@@ -7,7 +7,7 @@ export default function Home() {
         <title>Mutual Aid Tracker</title>
       </Head>
 
-      <main>
+      <main className="bg-teal-100">
         <h1 className="title">Welcome to Your Mutual Aid Tracker</h1>
 
         <p className="description">

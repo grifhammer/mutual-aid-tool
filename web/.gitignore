@@ -36,6 +36,6 @@ jspm_packages/
 !/pages/
 /lib
 /dist/
-/.next/
 !/tailwind.config.json
 !/postcss.config.json
+/.next/
