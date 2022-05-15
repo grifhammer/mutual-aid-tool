@@ -1,6 +1,7 @@
 import { web } from "projen";
 import { TurborepoProject } from "projen-turborepo";
 import { TypeScriptProject } from "projen/lib/typescript";
+import { addTailwind } from "./tailwind";
 
 const project = new TurborepoProject({
   defaultReleaseBranch: "main",
@@ -33,17 +34,18 @@ const nextJs = new web.NextJsTypeScriptProject({
     prettier: true,
     dirs: [],
   },
+  tsconfig: {
+    compilerOptions: {
+      strict: true,
+    },
+  },
   tsconfigDev: {
     compilerOptions: {
       strict: true,
     },
   },
 });
-
-const postCss = nextJs.tryFindObjectFile("postcss.config.json");
-postCss?.addOverride("plugins.tailwindcss.config", "./tailwind.config.json");
-const tailwindCss = nextJs.tryFindObjectFile("tailwind.config.json");
-tailwindCss?.addOverride("content", ["./pages/**/*.{html,tsx}"]);
+addTailwind(nextJs);
 
 new TypeScriptProject({
   parent: project,

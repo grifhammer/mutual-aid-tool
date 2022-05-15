@@ -39,3 +39,4 @@ jspm_packages/
 !/tailwind.config.json
 !/postcss.config.json
 /.next/
+!/tailwind.config.js

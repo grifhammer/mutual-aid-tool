@@ -1,7 +1,7 @@
 import Head from "next/head";
 export default function Home() {
   return (
-    <div className="container bg-black flex">
+    <div className="container flex ">
       <Head>
         <title>Mutual Aid Tracker</title>
       </Head>

@@ -1,7 +1,7 @@
 {
   "plugins": {
     "tailwindcss": {
-      "config": "./tailwind.config.json"
+      "config": "./tailwind.config.js"
     },
     "autoprefixer": {}
   }
