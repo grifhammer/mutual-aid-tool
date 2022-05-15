@@ -1,13 +1,12 @@
 import Head from "next/head";
-
 export default function Home() {
   return (
-    <div className="container">
+    <div className="container bg-black flex">
       <Head>
         <title>Mutual Aid Tracker</title>
       </Head>
 
-      <main className="bg-teal-100">
+      <main>
         <h1 className="title">Welcome to Your Mutual Aid Tracker</h1>
 
         <p className="description">

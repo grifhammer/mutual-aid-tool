@@ -40,8 +40,10 @@ const nextJs = new web.NextJsTypeScriptProject({
   },
 });
 
-const tailwindConfig = nextJs.tryFindObjectFile("tailwind.config.json");
-tailwindConfig?.addOverride("content", ["./pages/**/*.{html,ts}"]);
+const postCss = nextJs.tryFindObjectFile("postcss.config.json");
+postCss?.addOverride("plugins.tailwindcss.config", "./tailwind.config.json");
+const tailwindCss = nextJs.tryFindObjectFile("tailwind.config.json");
+tailwindCss?.addOverride("content", ["./pages/**/*.{html,tsx}"]);
 
 new TypeScriptProject({
   parent: project,
