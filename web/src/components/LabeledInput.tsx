@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 export default function LabeledInput({
   name,
   required = false,
@@ -6,15 +8,18 @@ export default function LabeledInput({
   required?: boolean;
 }) {
   return (
-    <div>
-      <label htmlFor={name}>{name}: </label>
+    <Fragment>
+      <label className="col-span-1" htmlFor={name}>
+        {name}
+      </label>
       <input
+        className="col-span-2"
         type={"text"}
         title={name}
         id={name}
         name={name}
         required={required}
       ></input>
-    </div>
+    </Fragment>
   );
 }

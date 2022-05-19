@@ -8,11 +8,19 @@ function submit(e: FormEvent) {
 }
 export default function RequestForm() {
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={submit} className="grid grid-cols-3">
       <LabeledInput name="item" />
-      <button type="submit" title="submit">
-        Submit
-      </button>
+      <LabeledInput name="location" />
+      <LabeledInput name="" />
+      <div className="col-span-3">
+        <button
+          className="bg-emerald-500 rounded p-1"
+          type="submit"
+          title="submit"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 }

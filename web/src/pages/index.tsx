@@ -15,8 +15,6 @@ export default function Home() {
         </p>
 
         <RequestForm />
-
-        <div className="grid"></div>
       </main>
 
       <footer></footer>
