@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "pages",
+    "rootDir": "src",
     "outDir": "lib",
     "alwaysStrict": true,
     "declaration": true,
@@ -37,7 +37,7 @@
     "incremental": true
   },
   "include": [
-    "pages/**/*.ts",
+    "src/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
   ],

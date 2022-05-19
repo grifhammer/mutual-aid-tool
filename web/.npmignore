@@ -2,7 +2,7 @@
 /.projen/
 /test/
 /tsconfig.dev.json
-/pages/
+/src/
 !/lib/
 !/lib/**/*.js
 !/lib/**/*.d.ts

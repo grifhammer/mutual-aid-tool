@@ -32,11 +32,12 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "incremental": true
+    "incremental": true,
+    "rootDir": "src"
   },
   "include": [
     ".projenrc.js",
-    "pages/**/*.ts",
+    "src/**/*.ts",
     "test/**/*.ts",
     "**/*.ts",
     "**/*.tsx"

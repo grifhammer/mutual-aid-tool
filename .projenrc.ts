@@ -22,9 +22,12 @@ const project = new TurborepoProject({
   },
   release: false,
   description: "A tool for tracking mutual aid",
+
   deps: [] /* Runtime dependencies of this module. */,
 });
+
 const nextJs = new web.NextJsTypeScriptProject({
+  srcdir: "src",
   defaultReleaseBranch: "main",
   name: "Frontend",
   outdir: "web",
@@ -36,6 +39,7 @@ const nextJs = new web.NextJsTypeScriptProject({
   },
   tsconfig: {
     compilerOptions: {
+      rootDir: "src",
       strict: true,
     },
   },
