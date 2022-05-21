@@ -32,7 +32,7 @@ const nextJs = new web.NextJsTypeScriptProject({
   name: "Frontend",
   outdir: "web",
   parent: project,
-  deps: [],
+  deps: ["@nextui-org/react"],
   eslintOptions: {
     prettier: true,
     dirs: [],

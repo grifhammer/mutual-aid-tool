@@ -1,10 +1,12 @@
 import Head from "next/head";
+import Navbar from "../components/Navbar";
 import RequestForm from "../components/RequestForm";
 export default function Home() {
   return (
     <div className="container m-auto text-center content-evenly">
       <Head>
         <title>Mutual Aid Tracker</title>
+        <Navbar />
       </Head>
 
       <main>

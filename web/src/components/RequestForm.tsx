@@ -1,25 +1,30 @@
+import { Button } from "@nextui-org/react";
 import { FormEvent } from "react";
 import LabeledInput from "./LabeledInput";
-
-function submit(e: FormEvent) {
+interface RequestFormProps {
+  submit?: (e: FormEvent) => any;
+}
+function defaultSubmit(e: FormEvent) {
   e.preventDefault();
   console.log(e);
   return;
 }
-export default function RequestForm() {
+export default function RequestForm({
+  submit = defaultSubmit,
+}: RequestFormProps) {
   return (
     <form onSubmit={submit} className="grid grid-cols-3">
       <LabeledInput name="item" />
       <LabeledInput name="location" />
-      <LabeledInput name="" />
+      <LabeledInput name="name" />
       <div className="col-span-3">
-        <button
-          className="bg-emerald-500 rounded p-1"
+        <Button
+          className="bg-emerald-500 rounded p-1 m-auto"
           type="submit"
           title="submit"
         >
           Submit
-        </button>
+        </Button>
       </div>
     </form>
   );

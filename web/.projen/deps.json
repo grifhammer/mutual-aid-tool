@@ -27,6 +27,10 @@
       "type": "build"
     },
     {
+      "name": "@nextui-org/react",
+      "type": "runtime"
+    },
+    {
       "name": "autoprefixer",
       "type": "runtime"
     },

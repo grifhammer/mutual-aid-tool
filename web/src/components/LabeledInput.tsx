@@ -1,3 +1,4 @@
+import { StyledInput, StyledInputLabel } from "@nextui-org/react";
 import { Fragment } from "react";
 
 export default function LabeledInput({
@@ -9,17 +10,15 @@ export default function LabeledInput({
 }) {
   return (
     <Fragment>
-      <label className="col-span-1" htmlFor={name}>
-        {name}
-      </label>
-      <input
+      <StyledInputLabel className="col-span-1">{name}</StyledInputLabel>
+      <StyledInput
         className="col-span-2"
         type={"text"}
         title={name}
         id={name}
         name={name}
         required={required}
-      ></input>
+      ></StyledInput>
     </Fragment>
   );
 }
