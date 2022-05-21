@@ -13,7 +13,7 @@ export default function RequestForm({
   submit = defaultSubmit,
 }: RequestFormProps) {
   return (
-    <form onSubmit={submit} className="grid grid-cols-3">
+    <form onSubmit={submit} className="flex flex-col gap-2 w-1/2 m-auto">
       <LabeledInput name="item" />
       <LabeledInput name="location" />
       <LabeledInput name="name" />

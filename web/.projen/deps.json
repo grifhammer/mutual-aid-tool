@@ -27,11 +27,27 @@
       "type": "build"
     },
     {
+      "name": "@fortawesome/fontawesome-svg-core",
+      "type": "runtime"
+    },
+    {
+      "name": "@fortawesome/free-solid-svg-icons",
+      "type": "runtime"
+    },
+    {
+      "name": "@fortawesome/react-fontawesome",
+      "type": "runtime"
+    },
+    {
       "name": "@nextui-org/react",
       "type": "runtime"
     },
     {
       "name": "autoprefixer",
+      "type": "runtime"
+    },
+    {
+      "name": "axios",
       "type": "runtime"
     },
     {

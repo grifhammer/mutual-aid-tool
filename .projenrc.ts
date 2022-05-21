@@ -32,7 +32,13 @@ const nextJs = new web.NextJsTypeScriptProject({
   name: "Frontend",
   outdir: "web",
   parent: project,
-  deps: ["@nextui-org/react"],
+  deps: [
+    "axios",
+    "@fortawesome/fontawesome-svg-core",
+    "@fortawesome/free-solid-svg-icons",
+    "@fortawesome/react-fontawesome",
+    "@nextui-org/react",
+  ],
   eslintOptions: {
     prettier: true,
     dirs: [],
