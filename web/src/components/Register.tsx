@@ -116,7 +116,8 @@ const Register: FunctionComponent = () => {
                 className={validName || !user ? "hide" : "invalid"}
               />
             </label>
-            <Input
+            <input
+              className="text-black"
               name="username"
               type="text"
               id="username"
@@ -126,7 +127,6 @@ const Register: FunctionComponent = () => {
               value={user}
               required
               aria-invalid={validName ? "false" : "true"}
-              aria-labeledby="username-label"
               aria-describedby="uidnote"
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
@@ -156,7 +156,8 @@ const Register: FunctionComponent = () => {
                 className={validPwd || !pwd ? "hide" : "invalid"}
               />
             </label>
-            <Input
+            <input
+              className="text-black"
               type="password"
               id="password"
               onChange={(e) => setPwd(e.target.value)}
@@ -196,7 +197,8 @@ const Register: FunctionComponent = () => {
                 className={validMatch || !matchPwd ? "hide" : "invalid"}
               />
             </label>
-            <Input
+            <input
+              className="text-black"
               type="password"
               id="confirm_pwd"
               onChange={(e) => setMatchPwd(e.target.value)}
