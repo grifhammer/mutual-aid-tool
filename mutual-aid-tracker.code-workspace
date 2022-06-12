@@ -11,12 +11,17 @@
     {
       "name": "Frontend",
       "path": "web"
+    },
+    {
+      "name": "Infra",
+      "path": "infra"
     }
   ],
   "settings": {
     "eslint.workingDirectories": [
       "./backend",
-      "./web"
+      "./web",
+      "./infra"
     ],
     "jest.disabledWorkspaceFolders": [
       "mutual-aid-tracker",

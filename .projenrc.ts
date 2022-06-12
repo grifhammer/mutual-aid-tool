@@ -22,7 +22,6 @@ const project = new TurborepoProject({
   },
   release: false,
   description: "A tool for tracking mutual aid",
-
   deps: [] /* Runtime dependencies of this module. */,
 });
 
@@ -61,6 +60,19 @@ new TypeScriptProject({
   parent: project,
   name: "Backend",
   outdir: "backend",
+  defaultReleaseBranch: "main",
+  deps: ["@hapi/hapi", "@hapi/cookie", "hapi-mongodb", "mongoose"],
+  devDeps: ["@types/hapi__hapi"],
+  eslintOptions: {
+    prettier: true,
+    dirs: [],
+  },
+});
+
+new TypeScriptProject({
+  parent: project,
+  name: "Infra",
+  outdir: "infra",
   defaultReleaseBranch: "main",
   deps: ["@pulumi/kubernetes", "@pulumi/kubernetesx"],
   eslintOptions: {

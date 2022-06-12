@@ -105,3 +105,4 @@ jobs:
         scope:
           - Backend
           - Frontend
+          - Infra

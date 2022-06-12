@@ -6,7 +6,6 @@ export default function Home() {
     <div className="container m-auto text-center content-evenly">
       <Head>
         <title>Mutual Aid Tracker</title>
-        <Navbar />
       </Head>
 
       <main>

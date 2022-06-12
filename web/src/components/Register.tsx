@@ -4,7 +4,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Input } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import axios, { AxiosResponse } from "axios";
 import Link from "next/link";
 import { FunctionComponent, useEffect, useRef, useState } from "react";
@@ -51,6 +51,7 @@ const Register: FunctionComponent = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    console.log("registering");
     // if button enabled with JS hack
     if (!USER_REGEX.test(user) || !PWD_REGEX.test(pwd)) {
       setErrMsg("Invalid Entry");
@@ -222,6 +223,7 @@ const Register: FunctionComponent = () => {
             <Button
               className="bg-orange-900"
               disabled={!validName || !validPwd || !validMatch ? true : false}
+              type="submit"
             >
               Sign Up
             </Button>
