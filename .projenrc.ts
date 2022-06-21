@@ -90,7 +90,7 @@ const dockerCompose = {
         context: "backend",
         target: "development",
       },
-      dependsOn: "db",
+      depends_on: "db",
     },
     db: { image: "mongo", restart: "always", environment: {}, expose: [27017] },
     frontend: {},
