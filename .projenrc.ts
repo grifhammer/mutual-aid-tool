@@ -118,7 +118,7 @@ new TextFile(backendProject, "Dockerfile", {
   lines: [
     "FROM node AS development",
     "COPY . /src",
-    "RUN cd /src; npm install",
+    "RUN cd /src; yarn install",
     'CMD ["ts-node", "/src/index.ts"]',
   ],
 });
@@ -126,8 +126,9 @@ new TextFile(backendProject, "Dockerfile", {
 new TextFile(nextJs, "Dockerfile", {
   lines: [
     "FROM node AS development",
-    "COPY package*.json ./",
-    "RUN npm install",
+    "COPY package.json ./",
+    "COPY yarn.lock ./",
+    "RUN yarn install",
     'CMD ["npm", "run", "watch"]',
   ],
 });
