@@ -1,5 +1,4 @@
-FROM node:16-alpine
-ENV NODE_VERSION 16.15.1
+FROM node:16
 FROM build AS development
 COPY . /src
 RUN cd /src; npm install

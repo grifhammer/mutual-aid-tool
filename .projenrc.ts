@@ -116,8 +116,7 @@ new YamlFile(project, ".docker/docker-compose.yaml", {
 
 new TextFile(backendProject, "Dockerfile", {
   lines: [
-    "FROM node:16-alpine",
-    "ENV NODE_VERSION 16.15.1",
+    "FROM node:16",
     "FROM build AS development",
     "COPY . /src",
     "RUN cd /src; npm install",
@@ -127,7 +126,7 @@ new TextFile(backendProject, "Dockerfile", {
 
 new TextFile(nextJs, "Dockerfile", {
   lines: [
-    "FROM node:16-alpine",
+    "FROM node:16",
     "COPY package*.json ./",
     "RUN npm install",
     'CMD ["npm", "run", "watch"]',
