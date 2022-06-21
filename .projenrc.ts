@@ -103,7 +103,7 @@ new YamlFile(project, ".docker/docker-compose.yaml", {
       },
       frontend: {
         build: {
-          context: "frontend",
+          context: "web",
           target: "development",
         },
         depends_on: ["backend"],

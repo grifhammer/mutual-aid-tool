@@ -18,7 +18,7 @@ services:
     container_name: mongo-database
   frontend:
     build:
-      context: frontend
+      context: web
       target: development
     depends_on:
       - backend
