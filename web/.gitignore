@@ -40,3 +40,4 @@ jspm_packages/
 !/postcss.config.json
 /.next/
 !/tailwind.config.js
+!/Dockerfile

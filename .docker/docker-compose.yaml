@@ -8,10 +8,20 @@ services:
       target: development
     depends_on:
       - db
+    container_name: hapijs
   db:
     image: mongo
     restart: always
     environment: {}
     expose:
       - 27017
-  frontend: {}
+    container_name: mongo-database
+  frontend:
+    build:
+      context: frontend
+      target: development
+    depends_on:
+      - backend
+    expose:
+      - 3000
+    container_name: nextjs

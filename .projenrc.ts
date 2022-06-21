@@ -82,24 +82,37 @@ new TypeScriptProject({
     dirs: [],
   },
 });
-const dockerCompose = {
-  version: "3.7",
-  services: {
-    backend: {
-      build: {
-        context: "backend",
-        target: "development",
-      },
-      depends_on: ["db"],
-    },
-    db: { image: "mongo", restart: "always", environment: {}, expose: [27017] },
-    frontend: {},
-  },
-};
 new YamlFile(project, ".docker/docker-compose.yaml", {
-  obj: dockerCompose,
+  obj: {
+    version: "3.7",
+    services: {
+      backend: {
+        build: {
+          context: "backend",
+          target: "development",
+        },
+        depends_on: ["db"],
+        container_name: "hapijs",
+      },
+      db: {
+        image: "mongo",
+        restart: "always",
+        environment: {},
+        expose: [27017],
+        container_name: "mongo-database",
+      },
+      frontend: {
+        build: {
+          context: "frontend",
+          target: "development",
+        },
+        depends_on: ["backend"],
+        expose: [3000],
+        container_name: "nextjs",
+      },
+    },
+  },
 });
-// new YamlFile(project, "docker-compose.yml", { obj: dockerCompose });
 
 new TextFile(backendProject, "Dockerfile", {
   lines: [
@@ -109,6 +122,16 @@ new TextFile(backendProject, "Dockerfile", {
     "COPY . /src",
     "RUN cd /src; npm install",
     'CMD ["ts-node", "/src/index.ts"]',
+  ],
+});
+
+new TextFile(nextJs, "Dockerfile", {
+  lines: [
+    "FROM node:16",
+    "WORKDIR .",
+    "COPY package*.json ./",
+    "RUN npm install",
+    'CMD ["npm", "run", "watch"]',
   ],
 });
 
