@@ -1,4 +1,4 @@
-FROM 16-alpine:3.16
+FROM node:16-alpine
 COPY package*.json ./
 RUN npm install
 CMD ["npm", "run", "watch"]
