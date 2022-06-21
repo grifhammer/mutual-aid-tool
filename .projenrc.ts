@@ -127,7 +127,7 @@ new TextFile(backendProject, "Dockerfile", {
 
 new TextFile(nextJs, "Dockerfile", {
   lines: [
-    "FROM node:16",
+    "FROM alpine:3.16",
     "WORKDIR .",
     "COPY package*.json ./",
     "RUN npm install",
