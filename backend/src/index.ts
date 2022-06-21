@@ -14,7 +14,9 @@ const init = async () => {
 
   await server.register({
     plugin: require("hapi-mongodb"),
-    options: { uri: process.env.MONGO_DB_URI },
+    options: {
+      url: process.env.MONGO_DB_URI,
+    },
   });
   server.auth.strategy("session", "cookie", {
     cookie: {
