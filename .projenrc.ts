@@ -111,7 +111,7 @@ new YamlFile(project, ".docker/docker-compose.yaml", {
           target: "development",
         },
         depends_on: ["backend"],
-        expose: [3000],
+        ports: ["3000:3000"],
         container_name: "nextjs",
       },
     },
