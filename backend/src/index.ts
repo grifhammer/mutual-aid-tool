@@ -1,12 +1,12 @@
 import * as hapi from "@hapi/hapi";
 
 import devConfig from "./config/example.index";
-import prodConfig from "./config/index";
+// import prodConfig from "./config/index";
 import User from "./models/User";
 
-const isProd = true;
+// const isProd = true;
 
-const config = isProd ? prodConfig : devConfig;
+const config = devConfig;
 console.log(config);
 const init = async () => {
   const server = hapi.server({ port: 3000, host: "localhost" });
