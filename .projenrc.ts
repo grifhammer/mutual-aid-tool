@@ -92,7 +92,7 @@ const dockerCompose = {
       },
       dependsOn: "db",
     },
-    db: { image: "mongo", restart: "always", environment: {}, expose: 27017 },
+    db: { image: "mongo", restart: "always", environment: {}, expose: [27017] },
     frontend: {},
   },
 };
