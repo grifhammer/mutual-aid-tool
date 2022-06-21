@@ -7,7 +7,7 @@ import User from "./models/User";
 // const isProd = true;
 
 const config = devConfig;
-console.log(config);
+console.info(process.env.MONGO_DB_URI);
 const init = async () => {
   const server = hapi.server({ port: 3000, host: "localhost" });
   await server.register(require("@hapi/cookie"));
