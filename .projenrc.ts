@@ -1,4 +1,4 @@
-import { TextFile, web, YamlFile } from "projen";
+import { JsonFile, TextFile, web, YamlFile } from "projen";
 import { TurborepoProject } from "projen-turborepo";
 import { TypeScriptProject } from "projen/lib/typescript";
 import { addTailwind } from "./tailwind";
@@ -82,6 +82,23 @@ new TypeScriptProject({
     dirs: [],
   },
 });
+
+new JsonFile(project, ".docker/config.json", {
+  obj: { dockerfile: "Dockerfile.devenv" },
+});
+
+new TextFile(project, "Dockerfile.devenv", {
+  lines: [
+    "FROM node:16",
+
+    "RUN useradd -s /bin/bash -m vscode \\",
+    "&& groupadd docker \\",
+    "&& usermod -aG docker vscode",
+
+    "USER vscode",
+  ],
+});
+
 new YamlFile(project, ".docker/docker-compose.yaml", {
   obj: {
     version: "3.7",
