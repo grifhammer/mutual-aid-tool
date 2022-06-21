@@ -10,7 +10,7 @@ services:
       - db
     container_name: hapijs
     environment:
-      MONGO_DB_URI: mongodb://root:xky6KBy3YHK8sN6TGH5g:27017/ma-tool
+      MONGO_DB_URI: mongodb://root:xky6KBy3YHK8sN6TGH5g@db:27017/ma-tool
       NODE_ENV: development
   db:
     image: mongo
