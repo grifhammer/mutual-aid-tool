@@ -126,8 +126,7 @@ new TextFile(backendProject, "Dockerfile", {
 new TextFile(nextJs, "Dockerfile", {
   lines: [
     "FROM node AS development",
-    "COPY package.json ./",
-    "COPY yarn.lock ./",
+    "COPY . ./",
     "RUN yarn install",
     'CMD ["npm", "run", "dev"]',
   ],
