@@ -117,7 +117,6 @@ new YamlFile(project, ".docker/docker-compose.yaml", {
 new TextFile(backendProject, "Dockerfile", {
   lines: [
     "FROM node",
-    "FROM build AS development",
     "COPY . /src",
     "RUN cd /src; npm install",
     'CMD ["ts-node", "/src/index.ts"]',
