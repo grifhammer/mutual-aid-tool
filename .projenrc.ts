@@ -119,7 +119,7 @@ new TextFile(backendProject, "Dockerfile", {
     "FROM node AS development",
     "COPY . /src",
     "RUN cd /src; npm install; npm i -g ts-node",
-    'CMD ["ts-node", "./src/index.ts"]',
+    'CMD ["ts-node", "/src/src/index.ts"]',
   ],
 });
 
