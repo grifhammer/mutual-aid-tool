@@ -129,7 +129,7 @@ new TextFile(nextJs, "Dockerfile", {
     "COPY package.json ./",
     "COPY yarn.lock ./",
     "RUN yarn install",
-    'CMD ["npm", "run", "watch"]',
+    'CMD ["npm", "run", "dev"]',
   ],
 });
 
