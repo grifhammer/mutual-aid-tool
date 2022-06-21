@@ -82,23 +82,24 @@ new TypeScriptProject({
     dirs: [],
   },
 });
-
-new YamlFile(project, ".docker/docker-compose.yml", {
-  obj: {
-    version: "3.7",
-    services: {
-      backend: {
-        build: {
-          context: "backend",
-          target: "development",
-        },
-        dependsOn: "db",
+const dockerCompose = {
+  version: "3.7",
+  services: {
+    backend: {
+      build: {
+        context: "backend",
+        target: "development",
       },
-      db: { image: "mongo", restart: "always", environment: {}, expose: 27017 },
-      frontend: {},
+      dependsOn: "db",
     },
+    db: { image: "mongo", restart: "always", environment: {}, expose: 27017 },
+    frontend: {},
   },
+};
+new YamlFile(project, ".docker/docker-compose.yaml", {
+  obj: dockerCompose,
 });
+// new YamlFile(project, "docker-compose.yml", { obj: dockerCompose });
 
 new TextFile(backendProject, "Dockerfile", {
   lines: [

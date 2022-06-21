@@ -45,5 +45,5 @@ backend/src/config/index.ts
 !/.eslintrc.json
 !/turbo.json
 !/dist/fake.json
-!/.docker/docker-compose.yml
+!/.docker/docker-compose.yaml
 !/mutual-aid-tracker.code-workspace

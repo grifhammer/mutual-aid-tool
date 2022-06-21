@@ -1,6 +1,6 @@
 {
   "files": [
-    ".docker/docker-compose.yml",
+    ".docker/docker-compose.yaml",
     ".eslintrc.json",
     ".gitattributes",
     ".github/pull_request_template.md",
