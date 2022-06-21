@@ -63,7 +63,7 @@ const backendProject = new TypeScriptProject({
   outdir: "backend",
   defaultReleaseBranch: "main",
   deps: ["@hapi/hapi", "@hapi/cookie", "hapi-mongodb", "mongoose"],
-  devDeps: ["@types/hapi__hapi"],
+  devDeps: ["@types/hapi__hapi", "ts-node"],
   gitignore: ["/src/config/index.ts"],
   eslintOptions: {
     prettier: true,
