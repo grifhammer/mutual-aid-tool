@@ -83,7 +83,7 @@ new TypeScriptProject({
   },
 });
 
-new YamlFile(project, "docker-compose.yml", {
+new YamlFile(project, ".docker/docker-compose.yml", {
   obj: {
     version: "3.7",
     services: {

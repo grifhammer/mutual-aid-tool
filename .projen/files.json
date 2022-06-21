@@ -1,5 +1,6 @@
 {
   "files": [
+    ".docker/docker-compose.yml",
     ".eslintrc.json",
     ".gitattributes",
     ".github/pull_request_template.md",
@@ -13,7 +14,6 @@
     ".projen/files.json",
     ".projen/tasks.json",
     "dist/fake.json",
-    "docker-compose.yml",
     "LICENSE",
     "mutual-aid-tracker.code-workspace",
     "tsconfig.dev.json",
