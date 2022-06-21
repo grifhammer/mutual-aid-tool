@@ -118,7 +118,7 @@ new TextFile(backendProject, "Dockerfile", {
   lines: [
     "FROM node AS development",
     "COPY . /src",
-    "RUN cd /src; yarn install",
+    "RUN cd /src; npm install",
     'CMD ["ts-node", "/src/index.ts"]',
   ],
 });
