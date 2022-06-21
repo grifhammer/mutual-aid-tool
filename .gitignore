@@ -30,6 +30,7 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+backend/src/config/index.ts
 !/.projenrc.js
 !/.github/workflows/build.yml
 !/.mergify.yml
@@ -44,5 +45,5 @@ jspm_packages/
 !/.eslintrc.json
 !/turbo.json
 !/dist/fake.json
+!/docker-compose.yml
 !/mutual-aid-tracker.code-workspace
-backend/src/config/index.ts

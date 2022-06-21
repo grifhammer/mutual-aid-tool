@@ -1,4 +1,4 @@
-import { web } from "projen";
+import { TextFile, web, YamlFile } from "projen";
 import { TurborepoProject } from "projen-turborepo";
 import { TypeScriptProject } from "projen/lib/typescript";
 import { addTailwind } from "./tailwind";
@@ -11,6 +11,7 @@ const project = new TurborepoProject({
   projectReferences: true,
   vscodeMultiRootWorkspaces: true,
   parallelWorkflows: true,
+  gitignore: ["backend/src/config/index.ts"],
   eslintOptions: {
     prettier: true,
     dirs: [],
@@ -56,13 +57,14 @@ const nextJs = new web.NextJsTypeScriptProject({
 });
 addTailwind(nextJs);
 
-new TypeScriptProject({
+const backendProject = new TypeScriptProject({
   parent: project,
   name: "Backend",
   outdir: "backend",
   defaultReleaseBranch: "main",
   deps: ["@hapi/hapi", "@hapi/cookie", "hapi-mongodb", "mongoose"],
   devDeps: ["@types/hapi__hapi"],
+  gitignore: ["/src/config/index.ts"],
   eslintOptions: {
     prettier: true,
     dirs: [],
@@ -79,6 +81,34 @@ new TypeScriptProject({
     prettier: true,
     dirs: [],
   },
+});
+
+new YamlFile(project, "docker-compose.yml", {
+  obj: {
+    version: "3.7",
+    services: {
+      backend: {
+        build: {
+          context: "backend",
+          target: "development",
+        },
+        dependsOn: "db",
+      },
+      db: { image: "mongo", restart: "always", environment: {}, expose: 27017 },
+      frontend: {},
+    },
+  },
+});
+
+new TextFile(backendProject, "Dockerfile", {
+  lines: [
+    "FROM alpine:3.16",
+    "ENV NODE_VERSION 16.15.1",
+    "FROM build AS development",
+    "COPY . /src",
+    "RUN cd /src; npm install",
+    'CMD ["ts-node", "/src/index.ts"]',
+  ],
 });
 
 project.synth();
