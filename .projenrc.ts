@@ -82,7 +82,6 @@ new TypeScriptProject({
     dirs: [],
   },
 });
-const mongoPW = "xky6KBy3YHK8sN6TGH5g";
 new YamlFile(project, ".docker/docker-compose.yaml", {
   obj: {
     version: "3.7",
@@ -95,7 +94,7 @@ new YamlFile(project, ".docker/docker-compose.yaml", {
         depends_on: ["db"],
         container_name: "hapijs",
         environment: {
-          MONGO_DB_URI: `mongodb://root:${mongoPW}@db:27017/ma-tool`,
+          MONGO_DB_URI: `mongodb://db:27017/ma-tool`,
           NODE_ENV: "development",
         },
       },
@@ -104,10 +103,7 @@ new YamlFile(project, ".docker/docker-compose.yaml", {
         restart: "always",
         expose: [27017],
         container_name: "mongo-database",
-        environment: {
-          MONGO_INITDB_ROOT_USERNAME: "root",
-          MONGO_INITDB_ROOT_PASSWORD: mongoPW,
-        },
+        environment: {},
       },
       frontend: {
         build: {
