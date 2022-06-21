@@ -93,6 +93,10 @@ new YamlFile(project, ".docker/docker-compose.yaml", {
         },
         depends_on: ["db"],
         container_name: "hapijs",
+        environment: {
+          MONGO_DB_URI: "mongodb://mongo:27017/ma-tool",
+          NODE_ENV: "development",
+        },
       },
       db: {
         image: "mongo",
