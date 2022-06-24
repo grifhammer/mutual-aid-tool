@@ -11,8 +11,8 @@ import { FunctionComponent, useEffect, useRef, useState } from "react";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
-const REGISTER_URL = "/register";
+const host = process.env.NEXT_PUBLIC_HOST;
+const REGISTER_URL = `${host}/register`;
 
 const Register: FunctionComponent = () => {
   const [user, setUser] = useState("");

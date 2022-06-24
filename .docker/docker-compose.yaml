@@ -9,6 +9,8 @@ services:
     depends_on:
       - db
     container_name: hapijs
+    expose:
+      - 403
     environment:
       MONGO_DB_URI: mongodb://db:27017/ma-tool
       NODE_ENV: development
@@ -28,3 +30,5 @@ services:
     ports:
       - 3000:3000
     container_name: nextjs
+    environment:
+      NEXT_PUBLIC_HOST: https://backend:403/
