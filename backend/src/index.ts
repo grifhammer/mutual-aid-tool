@@ -7,7 +7,6 @@ import User from "./models/User";
 // const isProd = true;
 
 const config = devConfig;
-console.info(process.env.MONGO_DB_URI);
 const init = async () => {
   const server = hapi.server({ port: 3001, host: "localhost" });
   await server.register(require("@hapi/cookie"));
@@ -35,7 +34,20 @@ const init = async () => {
       return { valid: true, credentials: account };
     },
   });
+
+  server.auth.default('session');
+
+    server.route([
+        {
+            method: 'GET',
+            path: '/register',
+            handler: function (_request: any, _h: any) {
+
+                return 'Welcome to the register page!';
+            }
+        },]);
   await server.start();
+  console.log('Server Started');
 };
 
 process.on("unhandledRejection", (err) => {
