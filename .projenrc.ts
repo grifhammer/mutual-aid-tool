@@ -131,9 +131,7 @@ new YamlFile(project, ".docker/docker-compose.yaml", {
         depends_on: ["backend"],
         ports: ["3000:3000"],
         container_name: "nextjs",
-        environment: {
-          NEXT_PUBLIC_HOST: `https://backend:403/`,
-        },
+        environment: {},
       },
     },
   },
